@@ -10,7 +10,7 @@ In this assignment, we are going to write code for a vegetable garden. But we're
 5. commit your code.
 6. back to step 1 with the next piece of functionality.
 
-##Terminology and vegetable formulas
+## Terminology and vegetable formulas
 
 But first back to the plants. We grow vegetables and fruit in a garden. We are going to calculate how much yield the various fruits and vegetables have for the garden.
 
@@ -25,11 +25,11 @@ First, let's explain some terms and definitions:
 - "revenue" is the turnover or income of one kilo of fruit or vegetables.
 - "profits" is profit, so that is revenue - costs.
 - "factor" in this context is an environmental factor that influences the yield.
-<div style="background-color: red;>
+<div style="background-color: rgba(255,0,0,1);">
 >Danger
 >
 >Be careful not to use the word "yield" as a variable, that is a reserved keyword in JavaScript
-                                       </div>
+</div>
 To keep the calculations simple at first, we make the following assumptions: - fruit and vegetables are always sold immediately (you do not have to take into account spoilage or insufficient demand) - there are no labor costs - we do not use manure - we don't have to pay for the land
 
 We have a number of formulas for the calculations. The formulas are relatively simple but taken together the code can get quite complex.
