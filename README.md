@@ -3,30 +3,33 @@
 
 In this assignment, we are going to write code for a vegetable garden. But we're going to do that the "Test-Driven" way. So we're going to repeat the following cycle while writing our code.
 
-write one or more tests for a piece of functionality.
-run the new tests and check that they fail (red).
-write code to pass all tests (green).
-improve the code so that it looks neat (refactor).
-commit your code.
-back to step 1 with the next piece of functionality.
-Terminology and vegetable formulas
+1. write one or more tests for a piece of functionality.
+2. run the new tests and check that they fail (red).
+3. write code to pass all tests (green).
+4. improve the code so that it looks neat (refactor).
+5. commit your code.
+6. back to step 1 with the next piece of functionality.
+
+##Terminology and vegetable formulas
+
 But first back to the plants. We grow vegetables and fruit in a garden. We are going to calculate how much yield the various fruits and vegetables have for the garden.
 
 We will also take environmental factors such as sun, wind, and temperature into account. These environmental factors influence how many kilograms of fruit and vegetables grow on the plants. Finally, we will calculate how much profit we can make with our vegetable garden.
 
 First, let's explain some terms and definitions:
 
-"crop" is a collection of plants of the same species, so for example a field of corn.
-"costs" is the cost of sowing one plant.
-"yield" is the yield of one plant or one crop (in kilograms).
-"sale price" is the selling price of a type of fruit or vegetable per kilo.
-"revenue" is the turnover or income of one kilo of fruit or vegetables.
-"profits" is profit, so that is revenue - costs.
-"factor" in this context is an environmental factor that influences the yield.
-Danger
-
-Be careful not to use the word "yield" as a variable, that is a reserved keyword in JavaScript
-
+- "crop" is a collection of plants of the same species, so for example a field of corn.
+- "costs" is the cost of sowing one plant.
+- "yield" is the yield of one plant or one crop (in kilograms).
+- "sale price" is the selling price of a type of fruit or vegetable per kilo.
+- "revenue" is the turnover or income of one kilo of fruit or vegetables.
+- "profits" is profit, so that is revenue - costs.
+- "factor" in this context is an environmental factor that influences the yield.
+<div style="background-color: red;>
+>Danger
+>
+>Be careful not to use the word "yield" as a variable, that is a reserved keyword in JavaScript
+                                       </div>
 To keep the calculations simple at first, we make the following assumptions: - fruit and vegetables are always sold immediately (you do not have to take into account spoilage or insufficient demand) - there are no labor costs - we do not use manure - we don't have to pay for the land
 
 We have a number of formulas for the calculations. The formulas are relatively simple but taken together the code can get quite complex.
