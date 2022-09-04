@@ -36,42 +36,42 @@ To keep the calculations simple at first, we make the following assumptions: - f
 
 We have a number of formulas for the calculations. The formulas are relatively simple but taken together the code can get quite complex.
 
-Cost
+### Cost
 The costs of sowing a plant are fixed per plant.
 
 Example: Sowing 1 maize plant costs 1 euro.
 
 If you have a crop of 230 maize plants, the costs for that crop are therefore 230 euros.
 
-Revenue
+### Revenue
 Each plant has a "sale price". That is how many euros you earn with one kilo of fruit or vegetables from that plant.
 
 If apples have a sale price of 2 euros and we sell 5 kilos of apples, then the revenue is 10 euros.
 
-Yield from one plant
+### Yield from one plant
 Each plant has a standard yield in kilograms. If no environmental factors play a role, then that is the yield.
 
 Each plant can have zero, one, or more environmental factors. Every environmental factor has a value, that value is the percentage influence on the yield.
 
 We can take an avocado and the sun as an environmental factor as an example. If an avocado gets a certain amount of sun, the yield will be different:
 
-lots of sun: +50% yield
-medium sun: 100% yield
-little sun: -20% yield
+1. lots of sun: +50% yield
+2. medium sun: 100% yield
+3. little sun: -20% yield
 Let's say an avocado plant has a standard yield of 3 kilos. In addition, let's say that there is a lot of sun. Then that plant will yield 3 kg* 150% = 4.5 kg of avocados.
 
 But suppose there is another factor: wind.
 
-lots of wind: -60% yield
-medium wind: -30% yield
-little wind: 100% yield
+1. lots of wind: -60% yield
+2. medium wind: -30% yield
+3. little wind: 100% yield
 And let's say there's not only a lot of sun now, but also a lot of wind. Then we can calculate the yield like this: 3kg * 150% * 40% = 1.8 kg.
 
 If there is a factor that does not influence a certain plant species, you do not have to take that into account. Example:
 
 The growth of avocado plants is not affected by the soil type. If the avocado plant grows on clay, that factor has no influence on how many kilograms of avocados an avocado plant produces. If other plants grow in the vegetable garden that are affected by this, you must of course take this into account.
 
-General tips
+### General tips
 Write all your code (and your comments) in English.
 
 Go step by step and run your tests all the time, using the watch command. Take a look at the TDD cycle at the top. Remember to commit after every cycle, or even if your tests are green.
@@ -79,7 +79,7 @@ Go step by step and run your tests all the time, using the watch command. Take a
 Create a new repository for this assignment.
 
 To give you a start, we'll give you some tests. You're not allowed to adjust these.
-
+```
 const { getYieldForPlant, getYieldForCrop, getTotalYield } = require("./farm");
 
 describe("getYieldForPlant", () => {
@@ -133,18 +133,21 @@ describe("getTotalYield", () => {
         expect(getTotalYield({ crops })).toBe(0);
     });
 });
+```
 Get the tests running with jest first. So write the code needed to make the tests pass.
 
 Then add functionality step by step. Use the TDD cycle at the top of this assignment. Add the functionality in the following steps:
 
-calculate the cost for a crop: getCostsForCrop.
-calculate the revenue for a crop (without environmental factors): getRevenueForCrop.
-calculate the profit for a crop (without environmental factors): getProfitForCrop.
-calculate the profit for multiple crops (without environmental factors): getTotalProfit.
+1.calculate the cost for a crop: getCostsForCrop.
+2. calculate the revenue for a crop (without environmental factors): getRevenueForCrop.
+3. calculate the profit for a crop (without environmental factors): getProfitForCrop.
+4. calculate the profit for multiple crops (without environmental factors): getTotalProfit.
+
 Implement the following functionalities by modifying your previously written functions.
 So don't write new functions. Check within the function whether there are relevant environmental factors that have been passed to the function.
 
-Include environmental factors in calculating the yield (in kilograms) of a plant in this function: getYieldForPlant, use the following data structures:
+1. Include environmental factors in calculating the yield (in kilograms) of a plant in this function: getYieldForPlant, use the following data structures:
+```
 const corn = {
 name: "corn",
 yield: 30,
@@ -160,19 +163,22 @@ factor: {
 const environmentFactors = {
 sun: "low",
 };
-do this calculation with multiple environmental factors.
-Be sure to ignore irrelevant environmental factors in your calculations.
-calculate the yield in kilograms of a crop getYieldForCrop, include environmental factors in your calculation.
-calculate the total yield of multiple crops getTotalYield, include environmental factors in your calculation.
-calculate the income of a crop getRevenueForCrop, include environmental factors in your calculation.
-calculate the profit of a crop getProfitForCrop, include environmental factors in your calculation.
-calculate the profit for multiple crops getTotalProfit, include environmental factors in your calculation.
+```
+2. do this calculation with multiple environmental factors.
+3. Be sure to ignore irrelevant environmental factors in your calculations.
+4. calculate the yield in kilograms of a crop getYieldForCrop, include environmental factors in your calculation.
+5. calculate the total yield of multiple crops getTotalYield, include environmental factors in your calculation.
+6. calculate the income of a crop getRevenueForCrop, include environmental factors in your calculation.
+7. calculate the profit of a crop getProfitForCrop, include environmental factors in your calculation.
+8. calculate the profit for multiple crops getTotalProfit, include environmental factors in your calculation.
+
 So as an example for the first step "calculate the cost for a crop":
 
-write one or more tests for "calculate the costs for a crop".
-run the new tests and check that they fail (red).
-write code to pass all tests (including this new one) (green).
-improve the code so that it looks neat (refactor).
-commit your code.
-back to step 1 with the next piece of functionality.
+1. write one or more tests for "calculate the costs for a crop".
+2. run the new tests and check that they fail (red).
+3. write code to pass all tests (including this new one) (green).
+4. improve the code so that it looks neat (refactor).
+5. commit your code.
+6. back to step 1 with the next piece of functionality.
+7. 
 Do not forget to include the package.json in your final submission.
