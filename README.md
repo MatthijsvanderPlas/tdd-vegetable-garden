@@ -25,7 +25,7 @@ First, let's explain some terms and definitions:
 - "revenue" is the turnover or income of one kilo of fruit or vegetables.
 - "profits" is profit, so that is revenue - costs.
 - "factor" in this context is an environmental factor that influences the yield.
-<div style="background-color: red;">
+<div style="background-color:red;">
     
 >Danger
 >
