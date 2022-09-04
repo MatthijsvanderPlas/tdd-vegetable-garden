@@ -25,10 +25,12 @@ First, let's explain some terms and definitions:
 - "revenue" is the turnover or income of one kilo of fruit or vegetables.
 - "profits" is profit, so that is revenue - costs.
 - "factor" in this context is an environmental factor that influences the yield.
-<div style="background-color: rgba(255,0,0,1);">
+<div style="background-color: red;">
+    
 >Danger
 >
 >Be careful not to use the word "yield" as a variable, that is a reserved keyword in JavaScript
+    
 </div>
 To keep the calculations simple at first, we make the following assumptions: - fruit and vegetables are always sold immediately (you do not have to take into account spoilage or insufficient demand) - there are no labor costs - we do not use manure - we don't have to pay for the land
 
