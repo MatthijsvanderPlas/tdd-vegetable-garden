@@ -1,0 +1,19 @@
+{
+  "name": "vegetable-garden",
+  "version": "1.0.0",
+  "description": "In this assignment, we are going to write code for a vegetable garden. But we're going to do that the \"Test-Driven\" way.",
+  "main": "farm.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatthijsvanderPlas/tdd-vegetable-garden.git"
+  },
+  "author": "Matthijs van der Plas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatthijsvanderPlas/tdd-vegetable-garden/issues"
+  },
+  "homepage": "https://github.com/MatthijsvanderPlas/tdd-vegetable-garden#readme"
+}
