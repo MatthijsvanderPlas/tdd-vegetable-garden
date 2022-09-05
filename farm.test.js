@@ -14,24 +14,43 @@ describe("getYieldForPlant", () => {
     };
 
     const environmentFactors = {
-        sun: "medium",
+        sun: "low",
         };
 
-    test("Get yield for plant with no environment factors", () => {
-        expect(getYieldForPlant(corn, environmentFactors)).toBe(30);
+    const environmentFactors2 = {
+        sun: "high",
+        };
+
+    test("Get yield for plant with environment factors", () => {
+        expect(getYieldForPlant(corn)).toBe(30);
+        expect(getYieldForPlant(corn, environmentFactors)).toBe(15);
+        expect(getYieldForPlant(corn, environmentFactors2)).toBe(45);
     });
 });
 
 describe("getYieldForCrop", () => {
-    test("Get yield for crop, simple", () => {
+    test("Get yield for crop, with enviroment factors", () => {
         const corn = {
             name: "corn",
             yield: 3,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+                },
+            },
         };
+
         const input = {
             crop: corn,
             numCrops: 10,
         };
+
+        const environmentFactors = {
+            sun: "medium",
+            };
+
         expect(getYieldForCrop(input)).toBe(30);
     });
 });

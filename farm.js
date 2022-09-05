@@ -1,8 +1,12 @@
-// purpose: get yield for a crop
-// input: a object with a name (crop, plant) and a yield 
-// output: yield
+// purpose: get yield for a crop (including enviromental factors)
+// input: a object with a name (crop, plant) and a yield and a second object with the enviromental factor
+// output: yield (adjusted by factors)
 const getYieldForPlant = (plant, factor) => {
-    return plant.yield + (plant.yield * (plant.factor.sun[factor.sun] / 100))
+    if (factor) {        
+        const factorAdjustment = (plant.yield * (plant.factor.sun[factor.sun] / 100))
+        return plant.yield + factorAdjustment
+    }
+    return plant.yield
 }
 
 // purpose: get yield for a crop object
