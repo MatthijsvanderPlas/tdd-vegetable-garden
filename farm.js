@@ -41,6 +41,14 @@ const getProfitForCrop = crop => {
 }
 
 
+// purpose: get the profit for an array of crop/plant objects
+// input: Array with objects with sale price per kilo, the cost per crop/plant, the number of crops and the yield per crop
+// output: Total profit for every crop in the array meaning revenue - costs and then added together
+const getTotalProfit = crops => {
+    return crops.map(crop => getProfitForCrop(crop)).reduce((totalProfit, currentProfit) => totalProfit + currentProfit, 0 )
+}
+
+
 
 module.exports = {
     getYieldForPlant,
@@ -49,4 +57,5 @@ module.exports = {
     getCostsForCrop,
     getRevenueForCrop,
     getProfitForCrop,
+    getTotalProfit,
 }
