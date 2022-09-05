@@ -4,7 +4,8 @@
   "description": "In this assignment, we are going to write code for a vegetable garden. But we're going to do that the \"Test-Driven\" way.",
   "main": "farm.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "watch": "jest --watchAll"
   },
   "repository": {
     "type": "git",
