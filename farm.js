@@ -1,8 +1,8 @@
 // purpose: get yield for a crop
 // input: a object with a name (crop, plant) and a yield 
 // output: yield
-const getYieldForPlant = (plant) => {
-    return plant.yield
+const getYieldForPlant = (plant, factor) => {
+    return plant.yield + (plant.yield * (plant.factor.sun[factor.sun] / 100))
 }
 
 // purpose: get yield for a crop object
