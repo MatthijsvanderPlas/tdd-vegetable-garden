@@ -19,9 +19,17 @@ const getTotalYield = ({ crops }) => {
     return  crops.map(crop => getYieldForCrop(crop)).reduce((total, increment) => total + increment)
 }
 
+// purpose: get the costs for a crop
+// input: object with cost per crop  a crop 
+// output: Total cost (cost * number of crops) (number)
 const getCostsForCrop = (crop) => {
     return crop.cost * crop.numCrops
 }
+
+const getRevenueForCrop = (crop) => {
+    return crop.sale * getYieldForCrop(crop)
+}
+
 
 
 module.exports = {
@@ -29,4 +37,5 @@ module.exports = {
     getYieldForCrop,
     getTotalYield,
     getCostsForCrop,
+    getRevenueForCrop,
 }
