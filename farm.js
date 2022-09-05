@@ -20,14 +20,24 @@ const getTotalYield = ({ crops }) => {
 }
 
 // purpose: get the costs for a crop
-// input: object with cost per crop  a crop 
+// input: object with cost per crop and a numCrops 
 // output: Total cost (cost * number of crops) (number)
 const getCostsForCrop = (crop) => {
     return crop.cost * crop.numCrops
 }
 
+// purpose: get the revenue for a crop
+// input: object with sale price per kilo of the crop and a yield and numCrops to get the getYieldForCrop
+// output: Total revenue meaning sale price * total amount of kilo/yield of the crop (number)
 const getRevenueForCrop = (crop) => {
     return crop.sale * getYieldForCrop(crop)
+}
+
+// purpose: get the profit for a crop
+// input: object with sale price per kilo, the cost per crop/plant, the number of crops and the yield per crop
+// output: Total profit meaning revenue - costs
+const getProfitForCrop = crop => {
+    return getRevenueForCrop(crop) - getCostsForCrop(crop)
 }
 
 
@@ -38,4 +48,5 @@ module.exports = {
     getTotalYield,
     getCostsForCrop,
     getRevenueForCrop,
+    getProfitForCrop,
 }
