@@ -158,25 +158,32 @@ describe("getYieldForPlant", () => {
         yield: 30,
         factor: {
             sun: {
-            low: -50,
-            medium: 0,
-            high: 50,
+                low: -50,
+                medium: 0,
+                high: 50,
+            },
+            wind: {
+                lots: -60,
+                medium: -30,
+                little: 100,
             },
         },
     };
 
     const environmentFactors = {
         sun: "low",
+        wind: "lots"
         };
 
     const environmentFactors2 = {
         sun: "high",
+        wind: "little",
         };
 
     test("Get yield for plant with environment factors", () => {
         expect(getYieldForPlant(corn)).toBe(30);
-        expect(getYieldForPlant(corn, environmentFactors)).toBe(15);
-        expect(getYieldForPlant(corn, environmentFactors2)).toBe(45);
+        expect(getYieldForPlant(corn, environmentFactors)).toBe(0);
+        expect(getYieldForPlant(corn, environmentFactors2)).toBe(75);
     });
 });
 

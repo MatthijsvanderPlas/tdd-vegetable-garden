@@ -3,8 +3,12 @@
 // output: yield (adjusted by factors)
 const getYieldForPlant = (plant, factor) => {
     if (factor) {        
-        const factorAdjustment = (plant.yield * (plant.factor.sun[factor.sun] / 100))
-        return plant.yield + factorAdjustment
+        let factoredYield = plant.yield
+        for (let key in factor) {
+            factoredYield +=  plant.yield * (plant.factor[key][factor[key]] /100)
+            }
+        if (factoredYield < 0) return 0
+        return factoredYield
     }
     return plant.yield
 }
@@ -35,7 +39,7 @@ const getCostsForCrop = (crop) => {
 }
 
 // purpose: get the revenue for a crop
-// input: object with sale price per kilo of the crop and a yield and numCrops to get the getYieldForCrop 
+// input: object with sale price per kilo of the crop and a yield and numCrops to get the getYieldForCrop
 // Added the enviromental factor into the function if it is passed in
 // output: Total revenue meaning sale price * total amount of kilo/yield of the crop (number)
 const getRevenueForCrop = (crop, factor) => {
