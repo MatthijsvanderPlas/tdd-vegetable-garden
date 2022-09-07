@@ -81,6 +81,38 @@ describe("getRevenueForCrop", () => {
         }
         expect(getRevenueForCrop(input)).toBe(112.5)
     })
+
+    test("Get revenue for crop, with enviromental factors", () => {
+        const brocolli = {
+            name: "brocolli",
+            yield: 5,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+                },
+            },
+        }
+
+        const environmentFactors = {
+            sun: "low",
+            };
+  
+        const environmentFactors2 = {
+            sun: "high",
+            };
+
+        const input = {
+            crop: brocolli,
+            numCrops: 15,
+            cost: .5,
+            sale: 1.5,
+        }
+
+        expect(getRevenueForCrop(input, environmentFactors)).toBe(56.25)
+        expect(getRevenueForCrop(input, environmentFactors2)).toBe(168.75)
+    })
 })
 
 describe("getProfitForCrop", () => {
@@ -232,7 +264,12 @@ describe("getTotalYield", () => {
                 },
             },
         };
-        const crops = [{ crop: corn, numCrops: 0 }];
+
+        const environmentFactors = {
+            sun: "low",
+            };
+        
+        const crops = [{ crop: corn, numCrops: 0, factor: environmentFactors}];
         expect(getTotalYield({ crops })).toBe(0);
     });
 });

@@ -22,6 +22,7 @@ const getYieldForCrop = (crop, factor) => {
 // purpose: loop over the array of objects and return the totalyield of the crops passed as objects
 // input: Array of crop objects 
 // output: Total yield as a single number
+// Added the enviromental factor into the object in the array and pass it down to the getYieldForCrop function
 const getTotalYield = ({ crops }) => {
     return  crops.map(crop => getYieldForCrop(crop, crop.factor)).reduce((total, increment) => total + increment)
 }
@@ -34,9 +35,13 @@ const getCostsForCrop = (crop) => {
 }
 
 // purpose: get the revenue for a crop
-// input: object with sale price per kilo of the crop and a yield and numCrops to get the getYieldForCrop
+// input: object with sale price per kilo of the crop and a yield and numCrops to get the getYieldForCrop 
+// Added the enviromental factor into the function if it is passed in
 // output: Total revenue meaning sale price * total amount of kilo/yield of the crop (number)
-const getRevenueForCrop = (crop) => {
+const getRevenueForCrop = (crop, factor) => {
+    if(factor){
+        return crop.sale * getYieldForCrop(crop, factor)
+    }
     return crop.sale * getYieldForCrop(crop)
 }
 
