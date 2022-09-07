@@ -157,7 +157,7 @@ describe("getYieldForCrop", () => {
                 sun: {
                 low: -50,
                 medium: 0,
-                high: 50,
+                high: 100,
                 },
             },
         };
@@ -168,9 +168,71 @@ describe("getYieldForCrop", () => {
         };
 
         const environmentFactors = {
-            sun: "medium",
+            sun: "low",
+            };
+        
+        const environmentFactors2 = {
+            sun: "high",
             };
 
-        expect(getYieldForCrop(input)).toBe(30);
+        expect(getYieldForCrop(input, environmentFactors)).toBe(15);
+        expect(getYieldForCrop(input, environmentFactors2)).toBe(60);
+    });
+});
+
+describe("getTotalYield", () => {
+    test("Calculate total yield with multiple crops and enviromental factors", () => {
+        const corn = {
+            name: "corn",
+            yield: 3,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 100,
+                },
+            },
+        };
+        const pumpkin = {
+            name: "pumpkin",
+            yield: 4,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 100,
+                },
+            },
+        };
+
+        const environmentFactors = {
+            sun: "low",
+            };
+        
+        const environmentFactors2 = {
+            sun: "high",
+            };
+
+        const crops = [
+            { crop: corn, numCrops: 5, factor: environmentFactors},
+            { crop: pumpkin, numCrops: 2, factor: environmentFactors2 },
+        ];
+        expect(getTotalYield({ crops })).toBe(23.5);
+    });
+
+    test("Calculate total yield with 0 amount", () => {
+        const corn = {
+            name: "corn",
+            yield: 3,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 100,
+                },
+            },
+        };
+        const crops = [{ crop: corn, numCrops: 0 }];
+        expect(getTotalYield({ crops })).toBe(0);
     });
 });

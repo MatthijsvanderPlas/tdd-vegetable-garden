@@ -12,15 +12,18 @@ const getYieldForPlant = (plant, factor) => {
 // purpose: get yield for a crop object
 // input: object with a crop object {crop, yield} and a numCrops variable 
 // output: yield * numCrops
-const getYieldForCrop = (crop) => {
-    return crop.crop.yield * crop.numCrops
+const getYieldForCrop = (crop, factor) => {
+    if(factor) {
+        return getYieldForPlant(crop.crop ,factor) * crop.numCrops
+    }
+    return getYieldForPlant(crop.crop) * crop.numCrops
 }
 
 // purpose: loop over the array of objects and return the totalyield of the crops passed as objects
 // input: Array of crop objects 
 // output: Total yield as a single number
 const getTotalYield = ({ crops }) => {
-    return  crops.map(crop => getYieldForCrop(crop)).reduce((total, increment) => total + increment)
+    return  crops.map(crop => getYieldForCrop(crop, crop.factor)).reduce((total, increment) => total + increment)
 }
 
 // purpose: get the costs for a crop
