@@ -5,15 +5,15 @@ const getYieldForPlant = (plant, factor) => {
     if (factor) {        
         let factoredYield = plant.yield
         for (let key in factor) {
-            // If the factor is a negative value we use take the value divide it by a hundred and simply make it a positive. We then multiply the yield by that number.
+            // If the factor is a negative value we use take the value divide it by a hundred make it a positive and subtract that from 1 -60% then means yield*.4 40% is left of the yield. We then multiply the yield by that number.
             // If the factor is a possitve value we divide the value by a hundred and add 1. We then multiply the yield by that number.
             if (plant.factor[key][factor[key]] < 0){ 
-                factoredYield =  factoredYield * (-1 * (plant.factor[key][factor[key]] /100))
+                factoredYield =  factoredYield * (1 - (-1 * (plant.factor[key][factor[key]] /100)))
             } else {
                 factoredYield = factoredYield * (1 + (plant.factor[key][factor[key]] /100))
             }
-            }
-        return factoredYield
+        }
+        return Math.round(factoredYield * 100) /100
     }
     return plant.yield
 }
@@ -23,6 +23,7 @@ const getYieldForPlant = (plant, factor) => {
 // output: yield * numCrops
 const getYieldForCrop = (crop, factor) => {
     if(factor) {
+        console.log(getYieldForPlant(crop.crop, factor))
         return getYieldForPlant(crop.crop ,factor) * crop.numCrops
     }
     return getYieldForPlant(crop.crop) * crop.numCrops
