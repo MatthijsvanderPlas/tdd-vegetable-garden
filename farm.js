@@ -5,9 +5,14 @@ const getYieldForPlant = (plant, factor) => {
     if (factor) {        
         let factoredYield = plant.yield
         for (let key in factor) {
-            factoredYield +=  plant.yield * (plant.factor[key][factor[key]] /100)
+            // If the factor is a negative value we use take the value divide it by a hundred and simply make it a positive. We then multiply the yield by that number.
+            // If the factor is a possitve value we divide the value by a hundred and add 1. We then multiply the yield by that number.
+            if (plant.factor[key][factor[key]] < 0){ 
+                factoredYield =  factoredYield * (-1 * (plant.factor[key][factor[key]] /100))
+            } else {
+                factoredYield = factoredYield * (1 + (plant.factor[key][factor[key]] /100))
             }
-        if (factoredYield < 0) return 0
+            }
         return factoredYield
     }
     return plant.yield
