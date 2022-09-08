@@ -23,7 +23,6 @@ const getYieldForPlant = (plant, factor) => {
 // output: yield * numCrops
 const getYieldForCrop = (crop, factor) => {
     if(factor) {
-        console.log(getYieldForPlant(crop.crop, factor))
         return getYieldForPlant(crop.crop ,factor) * crop.numCrops
     }
     return getYieldForPlant(crop.crop) * crop.numCrops

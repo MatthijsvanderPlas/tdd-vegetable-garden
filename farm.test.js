@@ -81,8 +81,10 @@ describe("getRevenueForCrop", () => {
         }
         expect(getRevenueForCrop(input)).toBe(112.5)
     })
+})
 
-    test("Get revenue for crop, with enviromental factors", () => {
+describe("getProfitForCrop", () => {
+    test("Get profit for crop, simple", () => {
         const brocolli = {
             name: "brocolli",
             yield: 5,
@@ -92,40 +94,18 @@ describe("getRevenueForCrop", () => {
                 medium: 0,
                 high: 50,
                 },
-            },
-        }
-
-        const environmentFactors = {
-            sun: "low",
-            };
-  
-        const environmentFactors2 = {
-            sun: "high",
-            };
-
-        const input = {
-            crop: brocolli,
-            numCrops: 15,
-            cost: .5,
-            sale: 1.5,
-        }
-
-        expect(getRevenueForCrop(input, environmentFactors)).toBe(56.25)
-        expect(getRevenueForCrop(input, environmentFactors2)).toBe(168.75)
-    })
-})
-
-describe("getProfitForCrop", () => {
-    test("Get profit for crop, simple", () => {
-        const brocolli = {
-            name: "brocolli",
-            yield: 5,
+                wind: {
+                lots: -60,
+                medium: -30,
+                little: 100,
+                },
+            }
         }
         const input = {
             crop: brocolli,
             numCrops: 15,
             cost: .5,
-            sale: 1.5,
+            sale: 1.5, 
         }
         expect(getProfitForCrop(input)).toBe(105)
     })
@@ -300,6 +280,81 @@ describe("getTotalYield", () => {
     });
 });
 
+describe("getRevenueForCrop", () => {
+    test("Get revenue for crop, with enviromental factors", () => {
+        const brocolli = {
+            name: "brocolli",
+            yield: 5,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+                },
+                wind: {
+                lots: -60,
+                medium: -30,
+                little: 100,
+                },
+            },
+        }
+
+        const environmentFactors = {
+            sun: "low",
+            wind: "medium"
+            };
+  
+        const environmentFactors2 = {
+            sun: "high",
+            wind: "little"
+            };
+
+        const input = {
+            crop: brocolli,
+            numCrops: 15,
+            cost: .5,
+            sale: 1.5,
+        }
+
+        expect(getRevenueForCrop(input, environmentFactors)).toBe(39.375)
+        expect(getRevenueForCrop(input, environmentFactors2)).toBe(337.5)
+    })
+})
+
+describe("getProfitForCrop", () => {
+    test("Get profit for crop, with enviromental factors", () => {
+        const brocolli = {
+            name: "brocolli",
+            yield: 5,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 50,
+                },
+                wind: {
+                lots: -60,
+                medium: -30,
+                little: 100,
+                },
+            }
+        }
+        const input = {
+            crop: brocolli,
+            numCrops: 15,
+            cost: .5,
+            sale: 1.5, 
+        }
+
+        const factor = {
+            sun: "high",
+            wind: "little"
+        }
+        // Profit Brocolli: (5*1.5*2*15*1.5)-(15*.5)
+        expect(getProfitForCrop(input, factor)).toBe(330)
+    })
+})
+
 describe("getTotalProfit", () => {
     test("Get profit for crop, with enviromental factors", () => {
         const brocolli = {
@@ -345,3 +400,4 @@ describe("getTotalProfit", () => {
         expect(getTotalProfit(crops)).toBe(521) 
     })
 })
+
