@@ -275,7 +275,7 @@ describe("getTotalYield", () => {
             { crop: corn, numCrops: 5, factor: environmentFactors},
             { crop: pumpkin, numCrops: 2, factor: environmentFactors2 },
         ];
-        expect(getTotalYield({ crops })).toBe(21.4); // Corn: 3 *.5 * 2 *5 = 15 Pumpkin: 4 * 2 * .4 * 2 = 6.4
+        expect(getTotalYield({ crops })).toBe(21.4); // Corn: 3 *.5 * 2 *5 = 15 Pumpkin: 4 * 2 * .4 * 2 = 6.4 Total: 21.4
     });
 
     test("Calculate total yield with 0 amount", () => {
@@ -299,3 +299,49 @@ describe("getTotalYield", () => {
         expect(getTotalYield({ crops })).toBe(0);
     });
 });
+
+describe("getTotalProfit", () => {
+    test("Get profit for crop, with enviromental factors", () => {
+        const brocolli = {
+            name: "brocolli",
+            yield: 5,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 100,
+                },
+                wind: {
+                    lots: -60,
+                    medium: -30,
+                    little: 100,
+                },
+            },
+        }
+
+        const pumpkin = {
+            name: "pumpkin",
+            yield: 3,
+            factor: {
+                sun: {
+                low: -50,
+                medium: 0,
+                high: 100,
+                },
+                wind: {
+                    lots: -60,
+                    medium: -30,
+                    little: 100,
+                },
+            },
+        }
+
+        const crops = [
+            { crop: brocolli, numCrops: 15, cost: .5, sale: 1.5, factor: { sun: "low", wind: "lots"}},
+            { crop: pumpkin, numCrops: 22, cost: 1, sale: 2, factor: { sun: "high", wind: "little"}}
+        ]
+        // Brocolli should profit 15: (5*.5*.4*15*1.5) - (15*.5) 
+        // Pumpkin should profit  506  : (3*2*2*22*2) - (22*1)
+        expect(getTotalProfit(crops)).toBe(521) 
+    })
+})
